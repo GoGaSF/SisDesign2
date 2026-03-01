@@ -1,0 +1,21 @@
+version: "3.9"
+
+services:
+  neo4j:
+    image: neo4j:5.22
+    container_name: gsp-neo4j
+    ports:
+      - "7474:7474"   # Browser
+      - "7687:7687"   # Bolt
+    environment:
+      # login: neo4j / neo4jpass
+      - NEO4J_AUTH=neo4j/neo4jpass
+      - NEO4J_server_memory_pagecache_size=1G
+      - NEO4J_server_memory_heap_initial__size=1G
+      - NEO4J_server_memory_heap_max__size=1G
+      - NEO4J_PLUGINS=[]
+    volumes:
+      - neo4j_data:/data
+
+volumes:
+  neo4j_data:
